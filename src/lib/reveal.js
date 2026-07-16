@@ -19,9 +19,12 @@ export function shouldSkipAnimation() {
  * Wire scroll reveals for every [data-reveal] inside `scope`.
  * data-reveal          → fade + rise
  * data-reveal="line"   → horizontal rule grows in
+ * `baseDelay` (seconds) is added for elements already inside the first
+ * viewport — used after a wipe transition so their reveal doesn't play
+ * while the overlay still covers the page.
  * Returns a cleanup function for useEffect.
  */
-export function initReveals(scope) {
+export function initReveals(scope, baseDelay = 0) {
   const skip = shouldSkipAnimation()
   const ctx = gsap.context(() => {
     const els = scope.querySelectorAll('[data-reveal]')
@@ -30,6 +33,8 @@ export function initReveals(scope) {
         gsap.set(el, { autoAlpha: 1 })
         return
       }
+      const inFirstViewport = el.getBoundingClientRect().top < window.innerHeight
+      const holdFor = inFirstViewport ? baseDelay : 0
       if (el.dataset.reveal === 'line') {
         gsap.fromTo(
           el,
@@ -38,6 +43,7 @@ export function initReveals(scope) {
             scaleX: 1,
             duration: 1.1,
             ease: 'expo.out',
+            delay: holdFor,
             scrollTrigger: { trigger: el, start: 'top 90%' },
           },
         )
@@ -51,7 +57,7 @@ export function initReveals(scope) {
           y: 0,
           duration: 0.9,
           ease: 'power3.out',
-          delay: (Number(el.dataset.revealDelay) || 0) / 1000,
+          delay: (Number(el.dataset.revealDelay) || 0) / 1000 + holdFor,
           scrollTrigger: { trigger: el, start: 'top 88%' },
         },
       )

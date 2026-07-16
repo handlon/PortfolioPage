@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { ArrowUpRight, ArrowDown, Code2 } from 'lucide-react'
 import { gsap, initReveals, shouldSkipAnimation } from '../lib/reveal.js'
-import { usePageTransition } from '../lib/transition.js'
+import { usePageTransition, consumeWipeDelay } from '../lib/transition.js'
 import ShapeGrid from '../components/ShapeGrid.jsx'
 import CursorLight from '../components/CursorLight.jsx'
 import Marquee from '../components/Marquee.jsx'
@@ -38,12 +38,13 @@ export default function DevPage() {
 
   useEffect(() => {
     document.title = 'Jan Handlík — Web Developer'
-    const cleanup = initReveals(rootRef.current)
+    const wipeDelay = consumeWipeDelay() // wait out the wipe overlay if arriving through one
+    const cleanup = initReveals(rootRef.current, wipeDelay)
     let ctx
     if (!shouldSkipAnimation()) {
       ctx = gsap.context(() => {
         gsap
-          .timeline({ defaults: { ease: 'power4.out' } })
+          .timeline({ delay: wipeDelay, defaults: { ease: 'power4.out' } })
           .fromTo('.dev-nav', { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.1)
           .fromTo(
             '.dev-hero-line',

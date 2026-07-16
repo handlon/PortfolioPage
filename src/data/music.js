@@ -5,28 +5,30 @@
 // (the second entry below is the band being joined now — fill it in
 //  once the lineup is public and their site is ready)
 
+import sparksOnStage from '../content/sparksOnStage.jpg'
+
 export const bands = [
   {
     id: 'young-sparks',
     name: 'Young Sparks',
     genre: 'Bluegrass',
-    role: 'Banjo', // adjust if needed
-    since: '2023',
+    role: 'Banjo', 
+    since: '2025',
     description:
       'Bluegrass five-piece. Fast picking, tight harmonies, festival stages and late-night jams.',
-    url: 'https://young-sparks-band.example.com', // PLACEHOLDER — swap for the real domain once it is set up
-    urlIsPlaceholder: true,
+    url: 'https://sparks-page.vercel.app/', // PLACEHOLDER — swap for the real domain once it is set up
+    urlIsPlaceholder: false,
     comingSoon: false,
-    photo: null, // PLACEHOLDER — e.g. '/bands/young-sparks.jpg' (put file in public/)
+    photo: sparksOnStage, // PLACEHOLDER — e.g. '/bands/young-sparks.jpg' (put file in public/)
   },
   {
-    id: 'new-project',
-    name: 'New Project',
-    genre: 'TBA',
-    role: 'TBA',
+    id: 'Sunnyside',
+    name: 'Sunnyside',
+    genre: 'Bluegrass',
+    role: 'Banjo',
     since: '2026',
     description:
-      'Just joined — announcement and website on the way. Watch this space.',
+      'Just joined — link will be here when the web is ready.',
     url: null,
     urlIsPlaceholder: false,
     comingSoon: true,
@@ -38,17 +40,17 @@ export const instruments = [
   {
     id: 'banjo',
     name: 'Banjo',
-    detail: 'Five-string, three-finger style. The loud one in the bluegrass lineup.',
+    detail: 'Five-string, three-finger style. I like the drive...',
   },
   {
     id: 'guitar',
     name: 'Guitar',
-    detail: 'Acoustic flatpicking and rhythm work. Electric when the song asks for it.',
+    detail: 'Acoustic flatpicking and rhythm work.',
   },
   {
     id: 'bass',
     name: 'Bass',
-    detail: 'Holding the low end down — session-ready on electric and upright feel.',
+    detail: 'Keeping the rhythm steady and the drive alive.',
   },
 ]
 
@@ -104,5 +106,6 @@ export const release = {
 export const links = {
   youtube: 'https://www.youtube.com/channel/UCHxC1FD_jouoqTbcS3bfKrQ',
   email: 'jan.handlik@gmail.com',
+  phone: '+420 733 331 767',
   basedIn: 'Czech Republic', // PLACEHOLDER — adjust ("Brno, CZ", "anywhere remote", …)
 }

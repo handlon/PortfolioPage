@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { gsap, shouldSkipAnimation } from '../lib/reveal.js'
-import { usePageTransition } from '../lib/transition.js'
+import { usePageTransition, consumeWipeDelay } from '../lib/transition.js'
 import './landing.css'
 
 export default function Landing() {
@@ -9,10 +9,11 @@ export default function Landing() {
 
   useEffect(() => {
     document.title = 'Jan Handlík — Developer & Musician'
+    const wipeDelay = consumeWipeDelay() // wait out the wipe overlay if arriving through one
     if (shouldSkipAnimation()) return
     const ctx = gsap.context(() => {
       gsap
-        .timeline({ defaults: { ease: 'power3.out' } })
+        .timeline({ delay: wipeDelay, defaults: { ease: 'power3.out' } })
         .fromTo('.panel-dev .panel-inner', { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 1 }, 0.1)
         .fromTo('.panel-music .panel-inner', { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 1 }, 0.1)
         .fromTo('.landing-name', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.9 }, 0.5)
@@ -68,7 +69,6 @@ export default function Landing() {
 
       <h1 className="landing-name" aria-label="Jan Handlík">
         <span className="ln-dev">JAN</span>
-        <span className="ln-amp">/</span>
         <span className="ln-music">Handlík</span>
       </h1>
 

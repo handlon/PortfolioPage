@@ -110,15 +110,16 @@ ol {
   outline-offset: 3px;
 }
 
-/* ── route transition wipe ──────────────────────────────────────── */
-.route-wipe {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: #050505;
-  transform: translateY(100%);
-  pointer-events: none;
-  will-change: transform;
+/* ── route transition: sliding page layers ──────────────────────── */
+.page-stack {
+  position: relative;
+}
+
+/* note: no will-change/transform here while idle — it would create a
+   containing block and un-fix the page navbars. GSAP applies transforms
+   only for the duration of the slide. */
+.page-layer {
+  min-height: 100dvh;
 }
 
 /* ── film grain (music world) ───────────────────────────────────── */

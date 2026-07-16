@@ -688,6 +688,7 @@ a.music-platform:hover {
 .music-studio-cta {
   position: relative;
   z-index: 4;
+  margin-inline: 1rem;
   display: inline-block;
   font-family: var(--font-music-display);
   font-style: italic;

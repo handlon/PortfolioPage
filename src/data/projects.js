@@ -9,10 +9,50 @@
 //
 // `url` also powers the "visit site" link; `github` adds a repo link.
 
-export const projects = [
+export const projects = [  
+  {
+    id: 'Lenka Handlíková',
+    index: '01',
+    title: 'Lenka Handlíková\'s website',
+    subtitle: 'website for my mother (finance freelancer)',
+    description:
+      'fully responsive website for my mother, built with react and TailwindCSS. includes calendar booking using calendly.',
+    stack: ['react', 'TailwindCSS', 'calendly'],
+    year: '2026',
+    url: null, // PLACEHOLDER — add live link
+    github: "https://github.com/handlon/mamka_page",
+    image: null,
+  },
+
+  {
+    id: 'Young Sparks',
+    index: '02',
+    title: 'Young Sparks',
+    subtitle: 'Website for my band',
+    description:
+      'Full responsive website for my band, built with next.js and TailwindCSS. Includes a custom audio player and tour dates',
+    stack: ['React', 'TailwindCSS', 'next.js'],
+    year: '2026',
+    url: 'https://sparks-page.vercel.app/',
+    github: "https://github.com/handlon/sparks-page", 
+    image: null,
+  },
+  {
+    id: 'Pavel Handlík',
+    index: '03',
+    title: 'Pavel Handlík\'s website',
+    subtitle: 'Website for my father (musician)',
+    description:
+      'presentational website for my father, built with react and TailwindCSS.',
+    stack: ['React', 'TailwindCSS'],
+    year: '2026',
+    url: 'https://pavelhandlik.cz/', 
+    github: "https://github.com/handlon/tatapage", 
+    image: null,
+  },
   {
     id: 'portfolio',
-    index: '01',
+    index: '04',
     title: 'Portofolio',
     subtitle: '--This website--',
     description:
@@ -20,46 +60,7 @@ export const projects = [
     stack: ['React', 'Vite', 'GSAP', 'Canvas'],
     year: '2026',
     url: '/', // points at itself — swap for the live domain once deployed
-    github: null, // PLACEHOLDER — add repo link
-    image: null,
-  },
-  {
-    id: 'aurora',
-    index: '02',
-    title: 'Aurora Dash',
-    subtitle: 'Realtime analytics dashboard',
-    description:
-      'Live metrics pipeline with sub-second updates over WebSockets. Built the frontend architecture and the charting layer from scratch.',
-    stack: ['React', 'JavaScript', 'WebSockets'],
-    year: '2026',
-    url: null, // PLACEHOLDER — add live link
-    github: null, // PLACEHOLDER — add repo link
-    image: null,
-  },
-  {
-    id: 'formhive',
-    index: '03',
-    title: 'Formhive',
-    subtitle: 'Headless form platform',
-    description:
-      'API-first form backend: schema validation, spam filtering and webhook delivery. Built the API and the dashboard around it.',
-    stack: ['Node.js', 'MongoDB', 'Express'],
-    year: '2025',
-    url: null, // PLACEHOLDER — add live link
-    github: null, // PLACEHOLDER — add repo link
-    image: null,
-  },
-  {
-    id: 'tempo',
-    index: '04',
-    title: 'Tempo',
-    subtitle: 'Practice tracker for musicians',
-    description:
-      'Where both worlds meet — a mobile app for logging practice sessions, with streaks, tempo goals and setlist notes.',
-    stack: ['React Native', 'Firebase', 'Expo'],
-    year: '2025',
-    url: null, // PLACEHOLDER — add live link
-    github: null, // PLACEHOLDER — add repo link
+    github: "https://github.com/handlon/PortfolioPage",
     image: null,
   },
 ]

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
-import { ArrowUpRight, CirclePlay, Mail, Disc3, MapPin } from 'lucide-react'
+import { ArrowUpRight, CirclePlay, Mail, Disc3, MapPin, Phone } from 'lucide-react'
 import { gsap, initReveals, shouldSkipAnimation } from '../lib/reveal.js'
-import { usePageTransition } from '../lib/transition.js'
+import { usePageTransition, consumeWipeDelay } from '../lib/transition.js'
 import Waveform from '../components/Waveform.jsx'
 import Marquee from '../components/Marquee.jsx'
 import {
@@ -22,12 +22,13 @@ export default function MusicPage() {
 
   useEffect(() => {
     document.title = 'Jan Handlík — Musician'
-    const cleanup = initReveals(rootRef.current)
+    const wipeDelay = consumeWipeDelay() // wait out the wipe overlay if arriving through one
+    const cleanup = initReveals(rootRef.current, wipeDelay)
     let ctx
     if (!shouldSkipAnimation()) {
       ctx = gsap.context(() => {
         gsap
-          .timeline({ defaults: { ease: 'power3.out' } })
+          .timeline({ delay: wipeDelay, defaults: { ease: 'power3.out' } })
           .fromTo('.music-nav', { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.1)
           .fromTo('.music-hero-first', { autoAlpha: 0, y: 60, rotate: -2 }, { autoAlpha: 1, y: 0, rotate: 0, duration: 1.2 }, 0.25)
           .fromTo('.music-hero-last', { autoAlpha: 0, y: 60, rotate: 2 }, { autoAlpha: 1, y: 0, rotate: 0, duration: 1.2 }, 0.45)
@@ -260,10 +261,20 @@ export default function MusicPage() {
         <a className="music-studio-cta" href={`mailto:${links.email}`} data-reveal>
           {links.email}
         </a>
+        <a className="music-studio-cta" href={`tel:${links.phone}`} data-reveal>
+          {links.phone}
+        </a>
+        <p className="music-studio-note" data-reveal>
+          Based in {links.basedIn} — available anywhere remote.
+        </p>
         <ul className="music-contact-rows" data-reveal>
           <li>
             <Mail size={15} strokeWidth={1.8} aria-hidden="true" />
             <a href={`mailto:${links.email}`}>{links.email}</a>
+          </li>
+          <li>
+            <Phone size={15} strokeWidth={1.8} aria-hidden="true" />
+            <a href={`tel:${links.phone}`}>{links.phone}</a>
           </li>
           <li>
             <MapPin size={15} strokeWidth={1.8} aria-hidden="true" />
