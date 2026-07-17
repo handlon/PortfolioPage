@@ -203,13 +203,6 @@
   color: #f2f2f0;
 }
 
-.ln-amp {
-  font-family: var(--font-mono);
-  font-weight: 300;
-  color: #9a9a96;
-  font-size: 0.8em;
-}
-
 .ln-music {
   font-family: var(--font-music-display);
   font-style: italic;

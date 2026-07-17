@@ -117,7 +117,7 @@ export default function MusicPage() {
       {/* ── about ── */}
       <section id="about" className="music-section">
         <h2 className="music-h2" data-reveal>
-          The <em>story</em>
+          The story
         </h2>
         <div className="music-about">
           {/* PLACEHOLDER — swap for a real portrait:
@@ -154,7 +154,7 @@ export default function MusicPage() {
       {/* ── bands ── */}
       <section id="bands" className="music-section">
         <h2 className="music-h2" data-reveal>
-          On <em>stage</em> with
+          On stage with
         </h2>
         <ul className="music-bands">
           {bands.map((b) => (
@@ -192,7 +192,7 @@ export default function MusicPage() {
       {/* ── music: videos + release ── */}
       <section id="music-releases" className="music-section">
         <h2 className="music-h2" data-reveal>
-          Hear <em>me</em>
+          Hear me
         </h2>
         <div className="music-videos" data-reveal>
           {videos.length > 0 ? (
@@ -258,7 +258,7 @@ export default function MusicPage() {
           studio &amp; session work
         </p>
         <h2 className="music-studio-title" data-reveal>
-          Your track needs <em>strings?</em>
+          Your track needs strings?
         </h2>
         <p className="music-studio-copy" data-reveal>
           Banjo, guitar or bass — recorded in your studio or delivered remotely.

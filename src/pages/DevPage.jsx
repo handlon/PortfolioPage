@@ -28,7 +28,7 @@ function ProjectMedia({ project }) {
   }
   return (
     <div className="dev-project-placeholder">
-      <span>screenshot coming soon</span>
+      <span>hosting in progress</span>
     </div>
   )
 }

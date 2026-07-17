@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="16" height="32" fill="#050505"/>
-  <rect x="16" width="16" height="32" fill="#171010"/>
-  <text x="4" y="23" font-family="monospace" font-size="15" font-weight="bold" fill="#f2f2f0">J</text>
-  <text x="19" y="23" font-family="Georgia,serif" font-size="15" font-style="italic" fill="#e8a04c">H</text>
-</svg>

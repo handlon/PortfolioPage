@@ -40,7 +40,7 @@ export default function Landing() {
           <h2 className="panel-word panel-word-dev">
             DEVE<br />LOPER
           </h2>
-          <p className="panel-tags">react · node · systems</p>
+          <p className="panel-tags">react · web · AI</p>
           <span className="panel-enter">
             enter <span className="panel-arrow">→</span>
           </span>
@@ -69,7 +69,7 @@ export default function Landing() {
 
       <h1 className="landing-name" aria-label="Jan Handlík">
         <span className="ln-dev">JAN</span>
-        <span className="ln-music">Handlík</span>
+        <span className="ln-dev">HANDLÍK</span>
       </h1>
 
       <p className="landing-hint">one person · two sides — pick one</p>
