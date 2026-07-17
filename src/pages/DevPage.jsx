@@ -5,6 +5,7 @@ import { usePageTransition, consumeWipeDelay } from '../lib/transition.js'
 import ShapeGrid from '../components/ShapeGrid.jsx'
 import CursorLight from '../components/CursorLight.jsx'
 import Marquee from '../components/Marquee.jsx'
+import NavBar from '../components/NavBar.jsx'
 import { projects } from '../data/projects.js'
 import { capabilities, education, techMarquee } from '../data/capabilities.js'
 import { links } from '../data/music.js'
@@ -71,26 +72,31 @@ export default function DevPage() {
       <CursorLight />
 
       {/* ── nav ── */}
-      <header className="dev-nav">
-        <a
-          className="dev-logo"
-          href="/"
-          onClick={(e) => {
-            e.preventDefault()
-            transitionTo('/', '#050505')
-          }}
-        >
-          JH<span className="dev-logo-dim">.DEV</span>
-        </a>
-        <nav className="dev-links" aria-label="Sections">
-          <a href="#work">01/<span>WORK</span></a>
-          <a href="#skills">02/<span>SKILLS</span></a>
-          <a href="#contact">03/<span>CONTACT</span></a>
-        </nav>
-        <a className="dev-switch" href="/music" onClick={switchSide}>
-          ⇄ MUSIC SIDE
-        </a>
-      </header>
+      <NavBar
+        variant="dev"
+        logo={
+          <a
+            className="dev-logo"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault()
+              transitionTo('/', '#050505')
+            }}
+          >
+            JH<span className="dev-logo-dim">.DEV</span>
+          </a>
+        }
+        links={[
+          { href: '#work', label: <>01/<span>WORK</span></> },
+          { href: '#skills', label: <>02/<span>SKILLS</span></> },
+          { href: '#contact', label: <>03/<span>CONTACT</span></> },
+        ]}
+        switchButton={
+          <a className="dev-switch" href="/music" onClick={switchSide}>
+            ⇄ MUSIC SIDE
+          </a>
+        }
+      />
 
       {/* ── hero ── */}
       <section className="dev-hero">
@@ -233,7 +239,7 @@ export default function DevPage() {
       <footer className="dev-footer">
         <p>© 2026 JAN HANDLÍK</p>
         <a href="/music" onClick={switchSide} className="dev-footer-switch">
-          ALSO A MUSICIAN → <em>hear the other signal</em>
+          ALSO A MUSICIAN → <em>hear the other side</em>
         </a>
       </footer>
 

@@ -4,6 +4,7 @@ import { gsap, initReveals, shouldSkipAnimation } from '../lib/reveal.js'
 import { usePageTransition, consumeWipeDelay } from '../lib/transition.js'
 import Waveform from '../components/Waveform.jsx'
 import Marquee from '../components/Marquee.jsx'
+import NavBar from '../components/NavBar.jsx'
 import {
   bands,
   instruments,
@@ -50,27 +51,32 @@ export default function MusicPage() {
   return (
     <div ref={rootRef} className="music">
       {/* ── navbar ── */}
-      <header className="music-nav">
-        <a
-          className="music-logo"
-          href="/"
-          onClick={(e) => {
-            e.preventDefault()
-            transitionTo('/', '#171010')
-          }}
-        >
-          JH<span className="music-logo-note">&nbsp;·&nbsp;musician</span>
-        </a>
-        <nav className="music-links" aria-label="Sections">
-          <a href="#about">About</a>
-          <a href="#bands">Bands</a>
-          <a href="#music-releases">Music</a>
-          <a href="#studio">Contact</a>
-        </nav>
-        <a className="music-switch" href="/dev" onClick={switchSide}>
-          ⇄ dev side
-        </a>
-      </header>
+      <NavBar
+        variant="music"
+        logo={
+          <a
+            className="music-logo"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault()
+              transitionTo('/', '#171010')
+            }}
+          >
+            JH<span className="music-logo-note">&nbsp;·&nbsp;musician</span>
+          </a>
+        }
+        links={[
+          { href: '#about', label: 'About' },
+          { href: '#bands', label: 'Bands' },
+          { href: '#music-releases', label: 'Music' },
+          { href: '#studio', label: 'Contact' },
+        ]}
+        switchButton={
+          <a className="music-switch" href="/dev" onClick={switchSide}>
+            ⇄ dev side
+          </a>
+        }
+      />
 
       {/* ── hero ── */}
       <section className="music-hero grain">
@@ -293,7 +299,7 @@ export default function MusicPage() {
       <footer className="music-footer">
         <p>© 2026 Jan Handlík</p>
         <a href="/dev" onClick={switchSide} className="music-footer-switch">
-          also a developer → <em>see the other signal</em>
+          also a developer → <em>see the other side</em>
         </a>
       </footer>
     </div>
