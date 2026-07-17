@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import LangSwitch from './LangSwitch.jsx'
 
 /**
  * Shared top navbar with a real burger menu on mobile.
@@ -45,6 +46,9 @@ export default function NavBar({ variant, logo, links, switchButton }) {
           </a>
         ))}
       </nav>
+
+      {/* language toggle — stays visible in the bar on every breakpoint */}
+      <LangSwitch variant={variant} />
 
       <div className={`${p}-nav-actions`}>{switchButton}</div>
 

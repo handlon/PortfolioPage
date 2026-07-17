@@ -2,27 +2,33 @@ import { useEffect, useRef } from 'react'
 import { ArrowUpRight, CirclePlay, Mail, Disc3, MapPin, Phone } from 'lucide-react'
 import { gsap, initReveals, shouldSkipAnimation } from '../lib/reveal.js'
 import { usePageTransition, consumeWipeDelay } from '../lib/transition.js'
+import { useContent } from '../lib/i18n.jsx'
 import Waveform from '../components/Waveform.jsx'
 import Marquee from '../components/Marquee.jsx'
 import NavBar from '../components/NavBar.jsx'
-import {
-  bands,
-  instruments,
-  about,
-  videos,
-  uploadsPlaylist,
-  marquee,
-  release,
-  links,
-} from '../data/music.js'
 import './music.css'
 
 export default function MusicPage() {
   const rootRef = useRef(null)
   const transitionTo = usePageTransition()
+  const {
+    bands,
+    instruments,
+    about,
+    videos,
+    uploadsPlaylist,
+    marquee,
+    release,
+    links,
+    ui,
+  } = useContent()
+  const t = ui.music
 
   useEffect(() => {
-    document.title = 'Jan Handlík — Musician'
+    document.title = ui.title.music
+  }, [ui])
+
+  useEffect(() => {
     const wipeDelay = consumeWipeDelay() // wait out the wipe overlay if arriving through one
     const cleanup = initReveals(rootRef.current, wipeDelay)
     let ctx
@@ -66,14 +72,14 @@ export default function MusicPage() {
           </a>
         }
         links={[
-          { href: '#about', label: 'About' },
-          { href: '#bands', label: 'Bands' },
-          { href: '#music-releases', label: 'Music' },
-          { href: '#studio', label: 'Contact' },
+          { href: '#about', label: t.nav.about },
+          { href: '#bands', label: t.nav.bands },
+          { href: '#music-releases', label: t.nav.music },
+          { href: '#studio', label: t.nav.contact },
         ]}
         switchButton={
           <a className="music-switch" href="/dev" onClick={switchSide}>
-            ⇄ dev side
+            {t.toDev}
           </a>
         }
       />
@@ -82,16 +88,16 @@ export default function MusicPage() {
       <section className="music-hero grain">
         {/* PLACEHOLDER — swap this div's background for a real stage photo */}
         <div className="music-hero-photo" aria-hidden="true">
-          <span className="music-photo-note">stage photo — coming soon</span>
+          <span className="music-photo-note">{t.stagePhoto}</span>
         </div>
         <div className="music-social">
-          <a href={links.youtube} target="_blank" rel="noreferrer" aria-label="YouTube channel">
+          <a href={links.youtube} target="_blank" rel="noreferrer" aria-label={t.a11y.youtube}>
             <CirclePlay size={19} strokeWidth={1.8} />
           </a>
-          <a href={`mailto:${links.email}`} aria-label="Email Jan">
+          <a href={`mailto:${links.email}`} aria-label={t.a11y.email}>
             <Mail size={19} strokeWidth={1.8} />
           </a>
-          <span className="music-social-soon" title="Spotify — coming with the first record">
+          <span className="music-social-soon" title={t.a11y.spotifySoon}>
             <Disc3 size={19} strokeWidth={1.8} aria-hidden="true" />
           </span>
         </div>
@@ -99,15 +105,13 @@ export default function MusicPage() {
           <span className="music-hero-first">Jan</span>
           <span className="music-hero-last">Handlík</span>
         </h1>
-        <p className="music-hero-sub">
-          bluegrass multi-instrumentalist — banjo · guitar · bass
-        </p>
+        <p className="music-hero-sub">{t.heroSub}</p>
         <div className="music-hero-ctas">
           <a className="music-cta music-cta-solid" href="#music-releases">
-            hear my music <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden="true" />
+            {t.ctaPrimary} <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden="true" />
           </a>
           <a className="music-cta music-cta-ghost" href="#studio">
-            book a session
+            {t.ctaSecondary}
           </a>
         </div>
       </section>
@@ -117,13 +121,13 @@ export default function MusicPage() {
       {/* ── about ── */}
       <section id="about" className="music-section">
         <h2 className="music-h2" data-reveal>
-          The story
+          {t.about.heading}
         </h2>
         <div className="music-about">
           {/* PLACEHOLDER — swap for a real portrait:
               set background url(...) on .music-about-photo and drop the note */}
           <div className="music-about-photo" data-reveal aria-hidden="true">
-            <span className="music-photo-note">portrait — coming soon</span>
+            <span className="music-photo-note">{t.about.portrait}</span>
           </div>
           <div className="music-about-text">
             {about.paragraphs.map((p, i) => (
@@ -154,7 +158,7 @@ export default function MusicPage() {
       {/* ── bands ── */}
       <section id="bands" className="music-section">
         <h2 className="music-h2" data-reveal>
-          On stage with
+          {t.bands.heading}
         </h2>
         <ul className="music-bands">
           {bands.map((b) => (
@@ -163,7 +167,7 @@ export default function MusicPage() {
                 {b.photo ? (
                   <img src={b.photo} alt="" loading="lazy" />
                 ) : (
-                  <span className="music-photo-note">band photo — coming soon</span>
+                  <span className="music-photo-note">{t.bands.photoSoon}</span>
                 )}
               </div>
               <div className="music-band-body">
@@ -173,13 +177,13 @@ export default function MusicPage() {
                 </div>
                 <p className="music-band-desc">{b.description}</p>
                 <div className="music-band-meta">
-                  <span>{b.role} · since {b.since}</span>
+                  <span>{b.role} · {t.bands.since} {b.since}</span>
                   {b.comingSoon ? (
-                    <span className="music-chip">announcement coming soon</span>
+                    <span className="music-chip">{t.bands.comingSoon}</span>
                   ) : b.url ? (
                     <a className="music-band-link" href={b.url} target="_blank" rel="noreferrer">
-                      visit band site <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
-                      {b.urlIsPlaceholder && <small>(temporary address)</small>}
+                      {t.bands.visitSite} <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
+                      {b.urlIsPlaceholder && <small>{t.bands.temporary}</small>}
                     </a>
                   ) : null}
                 </div>
@@ -192,7 +196,7 @@ export default function MusicPage() {
       {/* ── music: videos + release ── */}
       <section id="music-releases" className="music-section">
         <h2 className="music-h2" data-reveal>
-          Hear me
+          {t.hear.heading}
         </h2>
         <div className="music-videos" data-reveal>
           {videos.length > 0 ? (
@@ -212,12 +216,12 @@ export default function MusicPage() {
             <div className="music-video music-video-wide">
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/videoseries?list=${uploadsPlaylist}`}
-                title="Latest uploads on YouTube"
+                title={t.hear.iframeTitle}
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
-              <p className="music-video-title">latest from the channel</p>
+              <p className="music-video-title">{t.hear.latest}</p>
             </div>
           )}
           <div className="music-release-col">
@@ -233,7 +237,7 @@ export default function MusicPage() {
                     </a>
                   ) : (
                     <span key={pl.id} className="music-platform is-soon">
-                      {pl.name} — soon
+                      {pl.name} — {t.hear.soon}
                     </span>
                   ),
                 )}
@@ -241,7 +245,7 @@ export default function MusicPage() {
             </div>
             <a className="music-yt-link" href={links.youtube} target="_blank" rel="noreferrer">
               <CirclePlay size={20} strokeWidth={1.8} aria-hidden="true" />
-              watch the whole channel
+              {t.hear.watchChannel}
               <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
             </a>
           </div>
@@ -255,14 +259,13 @@ export default function MusicPage() {
       {/* ── studio / contact ── */}
       <section id="studio" className="music-section music-studio grain">
         <p className="music-studio-eyebrow" data-reveal>
-          studio &amp; session work
+          {t.studio.eyebrow}
         </p>
         <h2 className="music-studio-title" data-reveal>
-          Your track needs strings?
+          {t.studio.heading}
         </h2>
         <p className="music-studio-copy" data-reveal>
-          Banjo, guitar or bass — recorded in your studio or delivered remotely.
-          Send a demo and I'll get back within a couple of days.
+          {t.studio.copy}
         </p>
         <a className="music-studio-cta" href={`mailto:${links.email}`} data-reveal>
           {links.email}
@@ -271,7 +274,7 @@ export default function MusicPage() {
           {links.phone}
         </a>
         <p className="music-studio-note" data-reveal>
-          Based in {links.basedIn} — available anywhere remote.
+          {t.studio.note(links.basedIn)}
         </p>
         <ul className="music-contact-rows" data-reveal>
           <li>
@@ -284,12 +287,12 @@ export default function MusicPage() {
           </li>
           <li>
             <MapPin size={15} strokeWidth={1.8} aria-hidden="true" />
-            <span>{links.basedIn} — available anywhere remote</span>
+            <span>{t.studio.remote(links.basedIn)}</span>
           </li>
           <li>
             <CirclePlay size={15} strokeWidth={1.8} aria-hidden="true" />
             <a href={links.youtube} target="_blank" rel="noreferrer">
-              YouTube channel
+              {t.studio.youtube}
             </a>
           </li>
         </ul>
@@ -297,9 +300,9 @@ export default function MusicPage() {
 
       {/* ── footer ── */}
       <footer className="music-footer">
-        <p>© 2026 Jan Handlík</p>
+        <p>{t.footer.note}</p>
         <a href="/dev" onClick={switchSide} className="music-footer-switch">
-          also a developer → <em>see the other side</em>
+          {t.footer.cross} → <em>{t.footer.crossEm}</em>
         </a>
       </footer>
     </div>

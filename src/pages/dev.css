@@ -677,8 +677,14 @@ a.dev-project-media:focus-visible .dev-project-visit {
     display: none;
   }
 
+  /* lang toggle stays in the bar, pushed right next to the burger */
+  .dev-nav .lang-switch {
+    margin-left: auto;
+  }
+
   .dev-burger {
     display: inline-flex;
+    margin-left: 0;
   }
 
   /* full-width dropdown panel under the bar */

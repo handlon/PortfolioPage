@@ -1,14 +1,21 @@
 import { useEffect, useRef } from 'react'
 import { gsap, shouldSkipAnimation } from '../lib/reveal.js'
 import { usePageTransition, consumeWipeDelay } from '../lib/transition.js'
+import { useContent } from '../lib/i18n.jsx'
+import LangSwitch from '../components/LangSwitch.jsx'
 import './landing.css'
 
 export default function Landing() {
   const rootRef = useRef(null)
   const transitionTo = usePageTransition()
+  const { ui } = useContent()
+  const t = ui.landing
 
   useEffect(() => {
-    document.title = 'Jan Handlík — Developer & Musician'
+    document.title = ui.title.landing
+  }, [ui])
+
+  useEffect(() => {
     const wipeDelay = consumeWipeDelay() // wait out the wipe overlay if arriving through one
     if (shouldSkipAnimation()) return
     const ctx = gsap.context(() => {
@@ -17,7 +24,7 @@ export default function Landing() {
         .fromTo('.panel-dev .panel-inner', { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 1 }, 0.1)
         .fromTo('.panel-music .panel-inner', { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 1 }, 0.1)
         .fromTo('.landing-name', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.9 }, 0.5)
-        .fromTo('.landing-hint, .landing-foot', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, 0.9)
+        .fromTo('.landing-hint, .landing-foot, .landing-lang', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, 0.9)
     }, rootRef)
     return () => ctx.revert()
   }, [])
@@ -33,16 +40,16 @@ export default function Landing() {
         href="/dev"
         className="panel panel-dev"
         onClick={(e) => go(e, '/dev', '#050505')}
-        aria-label="Enter the developer side"
+        aria-label={t.devAria}
       >
         <div className="panel-inner">
-          <p className="panel-eyebrow">01 / code</p>
+          <p className="panel-eyebrow">{t.devEyebrow}</p>
           <h2 className="panel-word panel-word-dev">
-            DEVE<br />LOPER
+            {t.devWord[0]}<br />{t.devWord[1]}
           </h2>
-          <p className="panel-tags">react · web · AI</p>
+          <p className="panel-tags">{t.devTags}</p>
           <span className="panel-enter">
-            enter <span className="panel-arrow">→</span>
+            {t.enter} <span className="panel-arrow">→</span>
           </span>
         </div>
         <div className="panel-bg panel-bg-dev" aria-hidden="true" />
@@ -52,16 +59,16 @@ export default function Landing() {
         href="/music"
         className="panel panel-music grain"
         onClick={(e) => go(e, '/music', '#171010')}
-        aria-label="Enter the musician side"
+        aria-label={t.musicAria}
       >
         <div className="panel-inner">
-          <p className="panel-eyebrow">02 / sound</p>
+          <p className="panel-eyebrow">{t.musicEyebrow}</p>
           <h2 className="panel-word panel-word-music">
-            Musi<br />cian
+            {t.musicWord[0]}<br />{t.musicWord[1]}
           </h2>
-          <p className="panel-tags">banjo · guitar · bass</p>
+          <p className="panel-tags">{t.musicTags}</p>
           <span className="panel-enter">
-            enter <span className="panel-arrow">→</span>
+            {t.enter} <span className="panel-arrow">→</span>
           </span>
         </div>
         <div className="panel-bg panel-bg-music" aria-hidden="true" />
@@ -72,8 +79,12 @@ export default function Landing() {
         <span className="ln-dev">HANDLÍK</span>
       </h1>
 
-      <p className="landing-hint">one person · two sides — pick one</p>
-      <p className="landing-foot">© 2026 Jan Handlík</p>
+      <div className="landing-lang">
+        <LangSwitch variant="landing" />
+      </div>
+
+      <p className="landing-hint">{t.hint}</p>
+      <p className="landing-foot">{t.foot}</p>
     </main>
   )
 }

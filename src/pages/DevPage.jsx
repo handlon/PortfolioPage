@@ -2,24 +2,22 @@ import { useEffect, useRef } from 'react'
 import { ArrowUpRight, ArrowDown, Code2 } from 'lucide-react'
 import { gsap, initReveals, shouldSkipAnimation } from '../lib/reveal.js'
 import { usePageTransition, consumeWipeDelay } from '../lib/transition.js'
+import { useContent } from '../lib/i18n.jsx'
 import ShapeGrid from '../components/ShapeGrid.jsx'
 import CursorLight from '../components/CursorLight.jsx'
 import Marquee from '../components/Marquee.jsx'
 import NavBar from '../components/NavBar.jsx'
-import { projects } from '../data/projects.js'
-import { capabilities, education, techMarquee } from '../data/capabilities.js'
-import { links } from '../data/music.js'
 import './dev.css'
 
-function ProjectMedia({ project }) {
+function ProjectMedia({ project, t }) {
   if (project.image) {
-    return <img src={project.image} alt={`${project.title} — screenshot`} loading="lazy" />
+    return <img src={project.image} alt={t.screenshotAlt(project.title)} loading="lazy" />
   }
   if (project.url) {
     return (
       <iframe
         src={project.url}
-        title={`${project.title} — live preview`}
+        title={t.livePreview(project.title)}
         loading="lazy"
         tabIndex={-1}
         sandbox="allow-scripts allow-same-origin"
@@ -28,7 +26,7 @@ function ProjectMedia({ project }) {
   }
   return (
     <div className="dev-project-placeholder">
-      <span>hosting in progress</span>
+      <span>{t.placeholder}</span>
     </div>
   )
 }
@@ -36,9 +34,14 @@ function ProjectMedia({ project }) {
 export default function DevPage() {
   const rootRef = useRef(null)
   const transitionTo = usePageTransition()
+  const { projects, capabilities, education, techMarquee, links, ui } = useContent()
+  const t = ui.dev
 
   useEffect(() => {
-    document.title = 'Jan Handlík — Web Developer'
+    document.title = ui.title.dev
+  }, [ui])
+
+  useEffect(() => {
     const wipeDelay = consumeWipeDelay() // wait out the wipe overlay if arriving through one
     const cleanup = initReveals(rootRef.current, wipeDelay)
     let ctx
@@ -87,13 +90,13 @@ export default function DevPage() {
           </a>
         }
         links={[
-          { href: '#work', label: <>01/<span>WORK</span></> },
-          { href: '#skills', label: <>02/<span>SKILLS</span></> },
-          { href: '#contact', label: <>03/<span>CONTACT</span></> },
+          { href: '#work', label: <>01/<span>{t.nav.work}</span></> },
+          { href: '#skills', label: <>02/<span>{t.nav.skills}</span></> },
+          { href: '#contact', label: <>03/<span>{t.nav.contact}</span></> },
         ]}
         switchButton={
           <a className="dev-switch" href="/music" onClick={switchSide}>
-            ⇄ MUSIC SIDE
+            {t.toMusic}
           </a>
         }
       />
@@ -107,11 +110,11 @@ export default function DevPage() {
             <span className="dev-hero-mask"><span className="dev-hero-line dev-hero-line-ghost">HANDLÍK</span></span>
           </h1>
           <div className="dev-hero-meta">
-            <p className="dev-hero-name">WEB DEVELOPER</p>
+            <p className="dev-hero-name">{t.role}</p>
             <hr className="dev-rule" />
-            <p className="dev-hero-tag">// clean code. sharp interfaces. scalable web solutions.</p>
+            <p className="dev-hero-tag">{t.tag}</p>
             <a className="dev-hero-cta" href="#work">
-              EXPLORE MY WORK <ArrowDown size={14} strokeWidth={2.5} aria-hidden="true" />
+              {t.cta} <ArrowDown size={14} strokeWidth={2.5} aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -123,8 +126,8 @@ export default function DevPage() {
       {/* ── projects ── */}
       <section id="work" className="dev-section">
         <div className="dev-section-head" data-reveal>
-          <p className="dev-eyebrow">01 / SELECTED WORK</p>
-          <h2 className="dev-h2">PROJECTS</h2>
+          <p className="dev-eyebrow">{t.projects.eyebrow}</p>
+          <h2 className="dev-h2">{t.projects.heading}</h2>
         </div>
         <hr className="dev-rule-full" data-reveal="line" />
         <div className="dev-projects">
@@ -136,16 +139,16 @@ export default function DevPage() {
                   href={p.url}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Visit ${p.title}`}
+                  aria-label={t.projects.visitAria(p.title)}
                 >
-                  <ProjectMedia project={p} />
+                  <ProjectMedia project={p} t={t.projects} />
                   <span className="dev-project-visit">
-                    VISIT SITE <ArrowUpRight size={14} strokeWidth={2.5} aria-hidden="true" />
+                    {t.projects.visit} <ArrowUpRight size={14} strokeWidth={2.5} aria-hidden="true" />
                   </span>
                 </a>
               ) : (
                 <div className="dev-project-media">
-                  <ProjectMedia project={p} />
+                  <ProjectMedia project={p} t={t.projects} />
                 </div>
               )}
               <div className="dev-project-info">
@@ -161,12 +164,12 @@ export default function DevPage() {
                   <span className="dev-project-links">
                     {p.url && (
                       <a href={p.url} target="_blank" rel="noreferrer">
-                        LIVE <ArrowUpRight size={13} strokeWidth={2.5} aria-hidden="true" />
+                        {t.projects.live} <ArrowUpRight size={13} strokeWidth={2.5} aria-hidden="true" />
                       </a>
                     )}
                     {p.github && (
                       <a href={p.github} target="_blank" rel="noreferrer">
-                        <Code2 size={13} strokeWidth={2.2} aria-hidden="true" /> CODE
+                        <Code2 size={13} strokeWidth={2.2} aria-hidden="true" /> {t.projects.code}
                       </a>
                     )}
                   </span>
@@ -180,8 +183,8 @@ export default function DevPage() {
       {/* ── capabilities ── */}
       <section id="skills" className="dev-section">
         <div className="dev-section-head" data-reveal>
-          <p className="dev-eyebrow">02 / CAPABILITIES</p>
-          <h2 className="dev-h2">WHAT I DO</h2>
+          <p className="dev-eyebrow">{t.caps.eyebrow}</p>
+          <h2 className="dev-h2">{t.caps.heading}</h2>
         </div>
         <hr className="dev-rule-full" data-reveal="line" />
         <div className="dev-caps">
@@ -190,20 +193,20 @@ export default function DevPage() {
               <h3>{c.title}</h3>
               <p>{c.description}</p>
               <div className="dev-cap-tags">
-                {c.tags.map((t) => (
-                  <span key={t}>{t}</span>
+                {c.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
                 ))}
               </div>
             </div>
           ))}
         </div>
         <div className="dev-edu" data-reveal>
-          <p className="dev-edu-label">EDUCATION</p>
+          <p className="dev-edu-label">{t.edu.label}</p>
           <ul>
             {education.map((e) => (
               <li key={e.id}>
-                <span className={`dev-edu-status ${e.status === 'up next' ? 'is-next' : ''}`}>
-                  {e.status}
+                <span className={`dev-edu-status ${e.status === 'next' ? 'is-next' : ''}`}>
+                  {t.edu.status[e.status]}
                 </span>
                 <span className="dev-edu-school">{e.school}</span>
                 <span className="dev-edu-field">{e.field}</span>
@@ -218,8 +221,8 @@ export default function DevPage() {
       {/* ── contact ── */}
       <section id="contact" className="dev-section dev-contact">
         <div className="dev-section-head" data-reveal>
-          <p className="dev-eyebrow">03 / CONTACT</p>
-          <h2 className="dev-h2">LET'S BUILD</h2>
+          <p className="dev-eyebrow">{t.contact.eyebrow}</p>
+          <h2 className="dev-h2">{t.contact.heading}</h2>
         </div>
         <hr className="dev-rule-full" data-reveal="line" />
         <a className="dev-email" href={`mailto:${links.email}`} data-reveal>
@@ -237,9 +240,9 @@ export default function DevPage() {
 
       {/* ── footer / crossover ── */}
       <footer className="dev-footer">
-        <p>© 2026 JAN HANDLÍK</p>
+        <p>{t.footer.note}</p>
         <a href="/music" onClick={switchSide} className="dev-footer-switch">
-          ALSO A MUSICIAN → <em>hear the other side</em>
+          {t.footer.cross} → <em>{t.footer.crossEm}</em>
         </a>
       </footer>
 

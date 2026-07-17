@@ -122,6 +122,65 @@ ol {
   min-height: 100dvh;
 }
 
+/* ── language switch (CZ / EN) ──────────────────────────────────── */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.lang-switch button {
+  color: inherit;
+  opacity: 0.5;
+  letter-spacing: inherit;
+  padding: 0.25rem 0.15rem;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch button:hover {
+  opacity: 0.85;
+}
+
+.lang-switch button.is-active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.lang-sep {
+  opacity: 0.35;
+}
+
+/* dev world: mono, white active */
+.lang-dev {
+  color: var(--d-mid);
+}
+.lang-dev button.is-active {
+  color: var(--d-fg);
+}
+
+/* music world: warm, amber active */
+.lang-music {
+  color: var(--m-mid);
+}
+.lang-music button.is-active {
+  color: var(--m-amber);
+}
+
+/* landing: reads over both halves via the parent's difference blend */
+.lang-landing {
+  color: #f2f2f0;
+}
+.lang-landing button {
+  opacity: 0.55;
+}
+.lang-landing button.is-active {
+  opacity: 1;
+}
+
 /* ── film grain (music world) ───────────────────────────────────── */
 .grain::after {
   content: '';
