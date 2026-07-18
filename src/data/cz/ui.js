@@ -16,7 +16,7 @@ export const ui = {
     devTags: 'react · web · AI',
     devAria: 'Přejít na vývojářskou stranu',
     musicEyebrow: '02 / zvuk',
-    musicWord: ['Hude', 'bník'],
+    musicWord: ['Muzi', 'kant'],
     musicTags: 'banjo · kytara · basa',
     musicAria: 'Přejít na hudební stranu',
     enter: 'vstoupit',
