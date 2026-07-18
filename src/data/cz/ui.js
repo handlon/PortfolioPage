@@ -25,13 +25,13 @@ export const ui = {
   },
 
   dev: {
-    nav: { work: 'PRÁCE', skills: 'DOVEDNOSTI', contact: 'KONTAKT' },
+    nav: { work: 'PROJRKTY', skills: 'DOVEDNOSTI', contact: 'KONTAKT' },
     toMusic: '⇄ HUDEBNÍ STRANA',
     role: 'WEBOVÝ VÝVOJÁŘ',
-    tag: '// čistý kód. ostrá rozhraní. škálovatelná webová řešení.',
+    tag: '// Čistý kód. Šikovný design. škálovatelná webová řešení.',
     cta: 'PROHLÉDNOUT PRÁCI',
     projects: {
-      eyebrow: '01 / VYBRANÁ PRÁCE',
+      eyebrow: '01 / VYBRANÉ PRÁCE',
       heading: 'PROJEKTY',
       visit: 'NAVŠTÍVIT',
       live: 'ŽIVĚ',
@@ -46,8 +46,8 @@ export const ui = {
     contact: { eyebrow: '03 / KONTAKT', heading: 'POJĎME TVOŘIT' },
     footer: {
       note: '© 2026 JAN HANDLÍK',
-      cross: 'TAKÉ HUDEBNÍK',
-      crossEm: 'poslechni druhou stranu',
+      cross: 'TAKÉ MUZIKANT',
+      crossEm: 'prohlédni hudební stranu',
     },
   },
 
@@ -80,9 +80,9 @@ export const ui = {
       soon: 'brzy',
     },
     studio: {
-      eyebrow: 'studiová & session spolupráce',
-      heading: 'Potřebuješ do skladby strunné nástroje?',
-      copy: 'Banjo, kytara nebo basa — nahráno u tebe ve studiu nebo doručeno na dálku. Pošli demo a ozvu se ti do pár dní.',
+      eyebrow: 'spolupráce',
+      heading: 'chceš semou spolupracovat?',
+      copy: 'Banjo, kytara nebo basa — nahraji na dálku nebo u tebe ve studiu. Pošli demo a ozvu se ti do pár dní.',
       note: (place) => `Sídlo: ${place} — dostupný i na dálku.`,
       remote: (place) => `${place} — dostupný i na dálku`,
       youtube: 'YouTube kanál',
@@ -90,7 +90,7 @@ export const ui = {
     footer: {
       note: '© 2026 Jan Handlík',
       cross: 'také vývojář',
-      crossEm: 'mrkni na druhou stranu',
+      crossEm: 'mrkni na vývojářskou stranu',
     },
   },
 }

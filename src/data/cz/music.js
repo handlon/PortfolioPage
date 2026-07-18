@@ -35,7 +35,7 @@ export const instruments = [
   {
     id: 'banjo',
     name: 'Banjo',
-    detail: 'Pětistrunné, tříprstý styl. Mám rád ten drive...',
+    detail: 'Pětistrunné, Scruggsův styl. Mám rád ten drive...',
   },
   {
     id: 'guitar',
@@ -45,14 +45,14 @@ export const instruments = [
   {
     id: 'bass',
     name: 'Basa',
-    detail: 'Držím groove a rytmus pevně na místě.',
+    detail: 'Pevný rytmus.',
   },
 ]
 
-export const about = {
+export const about =  {
   paragraphs: [
-    'Na banjo jsem začal hrát v roce 2022 během covidového lockdownu. Vlastně za to můžu dát vinu tátovi — právě on mě k bluegrassu přivedl, sám je totiž bluegrassový muzikant. Od té doby snad není den, kdy bych bluegrass neposlouchal. Ten drive, rytmus, prostě všechno na tom mě dostalo. Po čase jsem přibral kytaru a nedávno i basu, ale banjo zůstává mým hlavním nástrojem.',
-    'V roce 2025 jsem se po občasném hraní s tátou přidal do bluegrassové kapely Young Sparks. Od té doby jsem hodně aktivní muzikant a hraju po celé České republice. Nedávno jsem se přidal i do tátovy kapely Sunnyside a konečně se stal jejím stálým členem. Aktuálně pracuju na svém debutovém albu, které by mělo vyjít začátkem roku 2027.',
+    'Na banjo jsem začal hrát v roce 2022 během covidového lockdownu. Vlastně za to může můj táta, právě on mě k bluegrassu přivedl, sám je totiž bluegrassový muzikant. Od té doby snad není den, cobych bluegrass neposlouchal. Ten drive, rytmus, prostě všechno ohledně bluegrassu mě zaujalo. Po čase jsem začal hrát na kytaru a nedávno i basu, ale banjo zůstává mým hlavním nástrojem.',
+    'V roce 2025, po občasném hraní s tátou, jsem nastoupil do bluegrassové kapely Young Sparks. Od té doby jsem hodně aktivnim muzikantem a hraju po celé České republice. Nedávno jsem se napevno přidal i do tátovy kapely Sunnyside a konečně se stal jejím stálým členem. Aktuálně pracuju na svém debutovém albu, které by mělo vyjít začátkem roku 2027.',
   ],
   stats: [
     { value: '3', label: 'nástroje' },

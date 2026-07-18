@@ -7,7 +7,7 @@ export const projects = [
     id: 'Lenka Handlíková',
     index: '01',
     title: 'Web Lenky Handlíkové',
-    subtitle: 'web pro moji mámu (finanční poradkyně)',
+    subtitle: 'web pro moji mámu (finance freelancer)',
     description:
       'plně responzivní web pro moji mámu, postavený v Reactu a TailwindCSS. Obsahuje rezervaci schůzek přes Calendly.',
     stack: ['react', 'TailwindCSS', 'calendly'],
@@ -22,7 +22,7 @@ export const projects = [
     title: 'Young Sparks',
     subtitle: 'Web pro moji kapelu',
     description:
-      'Plně responzivní web pro moji kapelu, postavený v Next.js a TailwindCSS. Obsahuje vlastní audio přehrávač a termíny koncertů.',
+      'Plně responzivní web pro moji kapelu, postavený v Next.js s MongoDB databází a TailwindCSS. Obsahuje vlastní audio přehrávač a termíny koncertů.',
     stack: ['React', 'TailwindCSS', 'next.js'],
     year: '2026',
     url: 'https://sparks-page.vercel.app/',
@@ -48,7 +48,7 @@ export const projects = [
     title: 'Portfolio',
     subtitle: '--Tento web--',
     description:
-      'Dvoustranné portfolio: jedna identita, dva vizuální světy. Přechody řízené GSAP, částicové plátno a ručně stavěný design systém.',
+      'Dvoustranné portfolio: vývoj stránek a muzika. Přechody řízené GSAP, ručně stavěný design systém.',
     stack: ['React', 'Vite', 'GSAP', 'Canvas'],
     year: '2026',
     url: '/',

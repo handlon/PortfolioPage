@@ -7,21 +7,21 @@ export const capabilities = [
     id: 'frontend',
     title: 'Frontend & mobil',
     description:
-      'Webové aplikace v Reactu a mobilní appky v React Native — komponentové, animované a fungující na každé obrazovce.',
+      'Webové stránky v Reactu perfektně funkční i na mobilních zařízeních — komponentové, animované a fungující na každé obrazovce.',
     tags: ['React', 'React Native', 'JavaScript'],
   },
   {
     id: 'ai',
     title: 'Práce s AI',
     description:
-      'Stavím s AI v procesu — Claude a spol. na prototypování, refaktoring a review. Rychlejší vývoj, rychlejší učení.',
+      'Aktivně implementuji AI v mojí práci — Claude a spol na Rychlejší vývoj, rychlejší učení. lepší výsledky.',
     tags: ['Claude', 'AI tooling', 'Prompting'],
   },
   {
     id: 'backend',
     title: 'Backend & data',
     description:
-      'Node API s MongoDB v pozadí, k tomu základy sítí ze školy. Nejnovější část mého toolkitu — rychle se učím a stavím na tom reálné věci.',
+      'Node API s MongoDB databází, k tomu základy sítí ze školy. Nejnovější část mého toolkitu — rychle se učím a implementuji.',
     tags: ['Node.js', 'MongoDB', 'Networking'],
   },
 ]
@@ -31,13 +31,13 @@ export const education = [
     id: 'spsmb',
     status: 'done',
     school: 'Střední průmyslová škola Mladá Boleslav',
-    field: 'Technická střední škola — IT a základy sítí',
+    field: 'Technická střední škola — IT a základy počítačových sítí',
   },
   {
     id: 'tul',
     status: 'next',
     school: 'Technická univerzita v Liberci (TUL)',
-    field: 'Robotika',
+    field: 'Mechatronika a robotika — bakalářský program',
   },
 ]
 
