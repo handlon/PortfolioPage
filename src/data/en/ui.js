@@ -15,7 +15,7 @@ export const ui = {
     devWord: ['DEVE', 'LOPER'],
     devTags: 'react · web · AI',
     devAria: 'Enter the developer side',
-    musicEyebrow: '02 / sound',
+    musicEyebrow: '02 / music',
     musicWord: ['Musi', 'cian'],
     musicTags: 'banjo · guitar · bass',
     musicAria: 'Enter the musician side',

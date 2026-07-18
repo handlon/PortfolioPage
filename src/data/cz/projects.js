@@ -25,7 +25,7 @@ export const projects = [
       'Plně responzivní web pro moji kapelu, postavený v Next.js s MongoDB databází a TailwindCSS. Obsahuje vlastní audio přehrávač a termíny koncertů.',
     stack: ['React', 'TailwindCSS', 'next.js'],
     year: '2026',
-    url: 'https://sparks-page.vercel.app/',
+    url: null,
     github: 'https://github.com/handlon/sparks-page',
     image: null,
   },
