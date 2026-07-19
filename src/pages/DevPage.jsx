@@ -231,10 +231,10 @@ export default function DevPage() {
         </a>
         <div className="dev-contact-links" data-reveal>
           {/* PLACEHOLDER links — point these at real profiles */}
-          <a href="https://github.com" target="_blank" rel="noreferrer">
+          <a href="https://github.com/handlon" target="_blank" rel="noreferrer">
             <Code2 size={14} strokeWidth={2.2} aria-hidden="true" /> GITHUB ↗
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
+          <a href="https://www.linkedin.com/in/jan-handl%C3%ADk-007318423/" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
         </div>
       </section>
 

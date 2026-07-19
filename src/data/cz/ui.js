@@ -4,7 +4,7 @@
 
 export const ui = {
   title: {
-    landing: 'Jan Handlík — vývojář & hudebník',
+    landing: 'Jan Handlík — vývojář & muzikant',
     dev: 'Jan Handlík — webový vývojář',
     music: 'Jan Handlík — hudebník',
   },
