@@ -12,7 +12,7 @@ export const projects = [
       'plně responzivní web pro moji mámu, postavený v Reactu a TailwindCSS. Obsahuje rezervaci schůzek přes Calendly.',
     stack: ['react', 'TailwindCSS', 'calendly'],
     year: '2026',
-    url: null,
+    url: 'https://mamka-page.vercel.app/',
     github: 'https://github.com/handlon/mamka_page',
     image: null,
   },
